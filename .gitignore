@@ -1,0 +1,6 @@
+# Compiled Object files
+*.pyc
+*.sublime-project
+*.sublime-workspace
+
+docs/
