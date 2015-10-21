@@ -32,10 +32,9 @@ class PolyPar:
 		self.indecies = []
 		n=len(self.verts)
 		max_val = 9999
-		min_val = -1
 		if n<3:	return
 		# dp
-		c=[[(min_val,-1) for j in range(n)] for i in range(n)]
+		c=[[(max_val,-1) for j in range(n)] for i in range(n)]
 		for i in range(n-1,-1,-1):
 			for j in range(i+1,n):
 				cur_len = (self.verts[i]-self.verts[j]).length()
@@ -45,7 +44,7 @@ class PolyPar:
 					if self.check_inner_diag(i,j):
 						for k in range(i+1,j):
 							cur_val = cur_len+c[i][k][0]+c[k][j][0]
-							if cur_val>c[i][j][0]:
+							if cur_val<c[i][j][0]:
 								c[i][j]=(cur_val,k)
 		# bfs
 		que = deque()
